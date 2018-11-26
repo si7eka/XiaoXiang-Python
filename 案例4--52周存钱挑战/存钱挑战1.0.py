@@ -4,7 +4,9 @@
 """
 
 def main():
-    """主函数"""
+    """
+    主函数
+    """
     meizhou_cunru_jine = 10   # 每周存入金额
     i = 1                     # 计数器，记录第几周
     meizhou_dizeng_jine = 10  # 每周递增金额
