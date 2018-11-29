@@ -18,9 +18,10 @@ def main():
     """
     meizhou_cunru_jine = 10   # 每周存入金额
     meizhou_dizeng_jine = 10  # 每周递增金额
+    zongzhoushu = 52          # 总周数
     yue_list = []             # 列表型余额
 
-    for i in range(52):
+    for i in range(zongzhoushu):
         yue_list.append(meizhou_cunru_jine)    # 使用list.append()将每周存入金额添加到 yue_list中
         yue = math.fsum(yue_list)    # 使用math模块中的math.fsum()计算列表yue_list中所有元素的和
 
