@@ -33,8 +33,8 @@
 
 
 作者：si7eklz
-版本：1.0
-日期：20190101
+版本：4.0
+日期：20190107
 功能：输入某年某月某日，判断这一天是这一年的第几天
      2.0 新增功能：用列表替换元祖
      3.0 新增功能：使用集合，将月份划分为不同的集合在操作
@@ -67,21 +67,27 @@ def main():
     month = input_date.month   # input_date变量中取月
     day = input_date.day       # input_date变量中取日
 
-    # 包含30天 月份集合
-    _30_days_month_set = {4, 6, 9, 11}
-    _31_days_month_set = {1, 3, 5, 7, 8, 10, 12}
+    # 月份天数对应字典
+    month_day_dict = {1: 31,
+                      2: 28,
+                      3: 31,
+                      4: 30,
+                      5: 31,
+                      6: 30,
+                      7: 31,
+                      8: 31,
+                      9: 30,
+                      10: 31,
+                      11: 30,
+                      12: 31}
+
 
     # 月份初始天数
     days = 0
     days += day
 
     for i in range(1, month):         # 遍历从1到month的数字 创建列表赋值给i
-        if i in _30_days_month_set:   # 如果i 在_30_days_month_set这个集合中 days赋值30
-            days += 30
-        if i in _31_days_month_set:
-            days += 31
-        else:
-            days += 28
+        days += month_day_dict[i]
 
     if is_leap_year(year) and month > 2:
         days += 1
