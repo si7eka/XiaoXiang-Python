@@ -29,7 +29,21 @@
         key是否在字典中
             key in d
 
+        字典遍历
+            1. 遍历所有的key
+                for key in d.keys():
+                    print(key)
+            2. 遍历所有的value
+                for value in d.values():
+                    print(values)
+            3. 遍历所有的数据项
+                for item in d.items():
+                    print(items)
 
+扩展阅读
+    Python官方提供一个直接取"第几天"的方法，一行代码就可以完成
+    提示：strftime()中提供了许多格式化日期字符串的操作
+    https://docs.python.org/3/library/time.html#time.strftime
 
 
 作者：si7eklz
@@ -81,6 +95,9 @@ def main():
                       11: 30,
                       12: 31}
 
+    # 天数对应字典
+    # day_month_dict = {30: {4, 6, 9, 11},
+    #                  31: {1, 3, 5, 7, 8, 10,12}}
 
     # 月份初始天数
     days = 0
