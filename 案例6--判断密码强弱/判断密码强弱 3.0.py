@@ -88,6 +88,13 @@ def main():
         else:
             print('密码至少包含一位字母')
 
+        # 输出密码到txt
+        f = open('password_3.0.txt', 'a')  # 不指定绝对路径的话，文件默认是在和程序一个目录中,文件如果不存在则创建  a方法是每次最文件末尾附件 如果w的话会每次覆盖
+        f.write('密码：{}, 强度：{}\n' .format(password, strength_level))  # 对文件写入password
+        f.close()  # 关闭文件
+
+
+
         if strength_level == 3:
             print('密码强度合格！')
             break
