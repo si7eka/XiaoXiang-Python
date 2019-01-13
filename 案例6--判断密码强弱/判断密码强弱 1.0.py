@@ -28,6 +28,7 @@
 作者：si7eklz
 功能：判断密码强度
 日期：10290109
+版本：1.0
 """
 def check_number_exist(password_str):
     """
