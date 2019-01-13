@@ -36,7 +36,7 @@ def check_number_exist(password_str):
     for c in password_str:   # 循环遍历password中所有的字符，赋值给c
         if c.isnumeric():    # 如果c是数字
             has_num = True   # 赋值has_num = True
-            break            # 终止循环
+            break            # 终止整个循环
     return has_num           # 输出 has_num
 
 def check_letter_exist(password_str):
