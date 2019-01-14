@@ -1,37 +1,30 @@
 """
-文件基础：
-    文件：存储在外部介质（如：硬盘）上的数据或信息的集合
-    文本文件：一般指只有字符编码存储的文件，能够被最简单的文本编辑器直接读取
-    编码：信息从一种形式转换成另一种形式的过程
-    常见编码：
-        ASCII,Unicode,UTF-8...
-    多行文本，用\n表示换行
-
 文件的操作
-    步骤：打开文件 -> 操作文件（读写等）-> 关闭文件
+    读取操作：从文件中读取数据到计算机内存中
+    read()：返回值为包含整个文件内容的的一个字符串
+    readline():返回值为文件下一行内容的字符串
+    readlines():返回值为整个文件内容的列表，每项是以换行符为结尾的一行字符串
 
-    1. 打开文件：建立文件与程序的连接
-    open(filename,mode)
-    filename:文件名（包含路径）；mode：打开模式
-    打开模式      含义
-    r            只读，文件不存在则报错
-    w            只写，文件不存在则报错
-    a            在文件末尾附加
-    r+           读写
+    例子：
+    文件的遍历
+    f = open('tmp.txt','r')
+    for line in f.readlines():
+        # 处理一行数据
+        pass
+    f.close()
 
-    2. 操作文件：写入，读取，等
-    写入操作：从计算机内存向文件写入数据
-    write()：将文本数据写入文件中
-    writelines()：将字符串列表写入文件中
+    f = open('tmp.txt','r')
+    for line in f:
+        # 处理一行数据
+        pass
+    f.close()
 
-    3. 关闭文件：终止程序与稳健的关联
-    close()
 
 作者：si7eklz
 功能：判断密码强度
-日期：10290109
-版本：3.0
-     3.0增加功能：保存设置的密码及对应的强度保存到文件中
+日期：20190114
+版本：4.0
+     4.0增加功能：从文件中读取密码
 """
 def check_number_exist(password_str):
     """
@@ -61,50 +54,103 @@ def main():
     主函数
 
     """
-    try_times = 5
+    # try_times = 5
+    #
+    # while try_times > 0:
+    #
+    #     password = input('请输入密码：')
+    #
+    #     # 密码强度
+    #     strength_level = 0
+    #
+    #     # 规则1 ：密码长度大于8
+    #     if len(password) >= 8:
+    #         strength_level += 1
+    #     else:
+    #         print('密码长度至少大于8位')
+    #
+    #     # 规则2 ：需要包含数字：
+    #     if check_number_exist(password):
+    #         strength_level += 1
+    #     else:
+    #         print('密码至少包含一位数字')
+    #
+    #     # 规则3：判断含有字母
+    #     if check_letter_exist(password):
+    #         strength_level += 1
+    #     else:
+    #         print('密码至少包含一位字母')
+    #
+    #     # 输出密码到txt
+    #     f = open('password_3.0.txt', 'a')  # 不指定绝对路径的话，文件默认是在和程序一个目录中,文件如果不存在则创建  a方法是每次最文件末尾附件 如果w的话会每次覆盖
+    #     f.write('密码：{}, 强度：{}\n' .format(password, strength_level))  # 对文件写入password
+    #     f.close()  # 关闭文件
+    #
+    #
+    #
+    #     if strength_level == 3:
+    #         print('密码强度合格！')
+    #         break
+    #     else:
+    #         print('密码强度不合格!')
+    #         try_times -= 1
+    #         print()
+    #
+    # if try_times == 0:
+    #     print('密码设置失败，尝试次数超过5次')
 
-    while try_times > 0:
+    #
+    #
+    # 1. read()
+    f = open('password_3.0.txt', 'r')
+    read1 = f.read()
+    print(read1)
+    print('1 end')
+    print('')
+    print('')
+    f.close()
 
-        password = input('请输入密码：')
+    # 2. readline()
+    f = open('password_3.0.txt', 'r')
+    line1 = f.readline()
+    print(line1)
 
-        # 密码强度
-        strength_level = 0
+    line2 = f.readline()
+    print(line2)
 
-        # 规则1 ：密码长度大于8
-        if len(password) >= 8:
-            strength_level += 1
-        else:
-            print('密码长度至少大于8位')
+    print('2 end')
+    print('')
+    print('')
+    f.close()
 
-        # 规则2 ：需要包含数字：
-        if check_number_exist(password):
-            strength_level += 1
-        else:
-            print('密码至少包含一位数字')
-
-        # 规则3：判断含有字母
-        if check_letter_exist(password):
-            strength_level += 1
-        else:
-            print('密码至少包含一位字母')
-
-        # 输出密码到txt
-        f = open('password_3.0.txt', 'a')  # 不指定绝对路径的话，文件默认是在和程序一个目录中,文件如果不存在则创建  a方法是每次最文件末尾附件 如果w的话会每次覆盖
-        f.write('密码：{}, 强度：{}\n' .format(password, strength_level))  # 对文件写入password
-        f.close()  # 关闭文件
+    # 3-0. readlines()
+    f = open('password_3.0.txt', 'r')
+    lines = f.readlines()
+    print(lines)
+    print('3-0 end')
+    print('')
+    print('')
+    f.close()
 
 
+    # 3-1 遍历
+    f = open('password_3.0.txt', 'r')
+    for lines31 in f.readlines():
+        print('read: {}'.format(lines31))
+    print('3-1 end')
+    print('')
+    print('')
 
-        if strength_level == 3:
-            print('密码强度合格！')
-            break
-        else:
-            print('密码强度不合格!')
-            try_times -= 1
-            print()
+    f.close()
 
-    if try_times == 0:
-        print('密码设置失败，尝试次数超过5次')
+    # 3-2 遍历
+    f = open('password_3.0.txt', 'r')
+    for lines32 in f:
+        print('read:{}'.format(lines32))
+    print('3-2 end')
+    print('')
+    print('')
+    f.close()
 
 if __name__ == '__main__':
     main()
