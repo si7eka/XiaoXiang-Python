@@ -34,7 +34,7 @@ class PasswordTool:
 
     def process_password(self):       # 定义 密码判断过程的方法
         # 规则1 ：密码长度大于8
-        if len(self.password) >= 8:
+        if len(self.password) >= 8:     # len判断字符串长度
             self.strength_level += 1
         else:
             print('密码长度至少大于8位')
@@ -79,16 +79,16 @@ class FileTool:
     """
         文件作操工具类
     """
-    def ___init__(self, filepath):     # 构造函数，或初始化函数
-        self.filepath = filepath
+    def __init__(self, filepath1):     # 构造函数，或初始化函数
+        self.filepath1 = filepath1
 
     def write_to_file(self, line):
-        f = open(self.filepath, 'a')
+        f = open(self.filepath1, 'a')
         f.write(line)
         f.close()
 
     def read_from_file(self):
-        f = open(self.filepath, 'r')
+        f = open(self.filepath1, 'r')
         lines = f.readlines()
         f.close()
         return lines
@@ -100,9 +100,9 @@ def main():
 
     """
     try_times = 5    # 设可以尝试的次数5
-    filepath = 'password_6.0.txt'
+    filepath1 = '/Users/monkey/PycharmProjects/XiaoXiang-python/案例6--判断密码强弱/判断密码强弱 6.0/password_6.0.txt'
     # 实例化文件工具对象
-    file_tool = FileTool(filepath)
+    file_tool = FileTool(filepath1)
 
     while try_times > 0:     # 循环：当尝试次数>0是循环继续
 
@@ -112,7 +112,7 @@ def main():
         password_tool = PasswordTool(password)     # 将输入的password传入PasswordTool类，并赋值给password_tool
         password_tool.process_password()           # 调用password的方法process_password()
 
-        line = '密码：{}, 强度：{}\n'. format(password, password_tool.strength_level) # 对文件写入password
+        line = '密码：{}, 强度：{}\n'.format(password, password_tool.strength_level) # 对文件写入password
 
         # 写操作
         file_tool.write_to_file(line)
