@@ -11,44 +11,20 @@
     如何将对应的点数和次数关联起来？
         zip()函数
 知识点：
-    random模块
-        用于生成随机数
-        常用函数
-            函数                  含义
-            random()            生成一个[0, 1.0)之间的随机浮点数
-            uniform(a, b)       生成一个a到b之间的随机腐恶点数
-            randint(a, b)       生成一个a到b之间的随机整数
-            choice(<list>)      从列表中随机返回一个元素
-            shuffle(<list>)     将列表中元素随机打乱
-            sample(<list>, k)  从指定列表中随机获取k个元素
-        更多random模块的方法请参考
-           https://docs.python.org/3/library/random.html
+    zip()函数用于将对应的元素打包成一个个元组
 
-    enumerate()
-        enumerate()函数用于将可遍历的组合转换为一个索引序列
-        一般用于for循环中，同时列出元素和元素的索引号
+    l1 = [1, 2, 3, 4, 5]
+    l2 = ['a', 'b', 'c', 'd', 'e']
+    zip(l1, l2)
+    注意：元组中的元素是不可修改的，若要修改需要转成字典或其他
+    dict(zip(l1, l2))
+    {1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e'}
 
-        例子：
-        l = ['a', 'b', 'c']
-        for x in l:
-            print(x)
-        输出：
-        a
-        b
-        c
-
-        l = ['a', 'b', 'c']
-        for i, x in enumerate(l):
-            print('{}--{}'.format(i, x))
-        输出：
-        0--a
-        1--b
-        2--c
 
 作者：si7eklz
 功能：模拟掷骰子
 版本：2.0
-日期：20190120
+日期：20190123
 新增功能：
     2.0 模拟两个骰子
 """
@@ -68,20 +44,30 @@ def main():
     主函数
     """
     # 初始化次数
-    total_times = 1000
+    total_times = 10000
+
     # 初始化列表 [0, 0, 0, 0, 0, 0]，用于记录每次掷骰子的数
-    result_list = [0] * 6
+    result_list = [0] * 11
+
+    # 初始化点数列表
+    roll_list = list(range(2, 13))
+
+    # 合成字典
+    roll_dict = dict(zip(roll_list, result_list))
+
+
 
     # 循环total_times次
     for i in range(total_times):
         # roll 接收roll_dice函数的输出值
-        roll = roll_dice()
-        for j in range(1, 7):   # 遍历是1-6的数字
-            if roll == j:       # 如果 roll的数字==j
-                result_list[j - 1] += 1    # 在列表result_list对应的位置+1 来记录不通骰子每次得数的次数
+        roll1 = roll_dice()
+        roll2 = roll_dice()
+        for j in range(2, 13):   # 遍历是2-12的数字
+            if (roll1 + roll2) == j:       # 如果 roll1 + roll2 的数字==j
+                roll_dict[j] += 1    # 在列表result_dice对应的k的值+1 来记录不通骰子每次得数的次数
 
-    for i, result in enumerate(result_list):     # i索引号  result元素值
-        print('点数{}的次数：{}，频率：{}'.format(i + 1, result, result / total_times))
+    for i, result in roll_dict.items():     # i索引号  result元素值
+        print('点数{}的次数：{}，频率：{}'.format(i, result, result / total_times))
 
 
 if __name__ == '__main__':
