@@ -1,4 +1,5 @@
 {
     "python.pythonPath": "d:\\Users\\SI7EKLZ\\Anaconda3\\python.exe",
-    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe"
+    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+    "AREPL.pythonPath": "D:\\Users\\SI7EKLZ\\Anaconda3\\python.exe"
 }
