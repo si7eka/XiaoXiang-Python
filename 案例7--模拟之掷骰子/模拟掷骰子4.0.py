@@ -52,7 +52,7 @@ def main():
     主函数
     """
     # 初始化次数
-    total_times = 100
+    total_times = 300
 
     # 记录骰子的结果
     roll_list = []
@@ -66,7 +66,6 @@ def main():
         roll_list.append(roll1 + roll2)
 
     # 数据可视化
-    #        （data, bins, ）
     plt.hist(roll_list, bins=range(2, 14), normed=1, edgecolor='black', linewidth=1, alpha=0.5)
     plt.title('骰子点数统计')
     plt.xlabel('点数')
