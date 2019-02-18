@@ -18,6 +18,12 @@ json库
             loads()        将json格式字符串转换成Python数据类型
             dump()         与dumps()功能一致，输出到文件
             load()         与loads()功能一致，从文件读入
+
+列表排序
+    list.sort(func)
+        func指定了排序的方法
+        func可以通过lambda函数实现
+
 """
 
 import json
@@ -39,7 +45,12 @@ def main():
     """
     filepath = input('请输入json文件名称: ')
     city_list = process_json_file(filepath)
-    print(city_list)
+    city_list.sort(key=lambda city: city['aqi'])
+    top5_list = city_list[:5]
+
+    f = open('top5_aqi.json', mode='w', encoding='utf-8')
+    json.dump(top5_list, f, ensure_ascii=False)
+    f.close()
 
 
 if __name__ == '__main__':
