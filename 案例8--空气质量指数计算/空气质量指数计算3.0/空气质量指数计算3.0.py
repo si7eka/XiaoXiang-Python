@@ -7,23 +7,6 @@
 案例描述：
     读取已经获取的json数据文件
     将其转化成CSV文件
-
-json库
-    json库是处理json格式的Python标准库
-    两个过程：
-        编码（encoding），将Python数据类型装换成json格式的过程
-        解码（decoding），从json格式中解析书记对应到Python数据类型的过程
-            函数           含义
-            dumps()        将Python数据类型转换为json格式
-            loads()        将json格式字符串转换成Python数据类型
-            dump()         与dumps()功能一致，输出到文件
-            load()         与loads()功能一致，从文件读入
-
-列表排序
-    list.sort(func)
-        func指定了排序的方法
-        func可以通过lambda函数实现
-
 """
 
 import json
