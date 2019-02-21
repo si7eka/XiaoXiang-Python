@@ -95,8 +95,6 @@ def get_city_aqi(city_pinyin):
     soup = BeautifulSoup(r.text, 'lxml')
     div_list = soup.find_all('div', {'class': 'span1'})
 
-    div_list = soup.find_all('div', {'class': 'span1'})
-
     city_aqi = []
     for i in range(8):
         div_content = div_list[i]
